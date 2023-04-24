@@ -1,16 +1,25 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import bs4
+import requests
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def get_title(domain_name: str):
+    result = requests.get(domain_name)
+    # print(result.text)
+    soup = bs4.BeautifulSoup(result.text, "lxml")
+    print(soup)
+    title = soup.select("title")
+    print(title)
+    print(title[0].getText())
+    p_tag = soup.select("p")
+    print(type(p_tag))
+    print(p_tag)
+    print(p_tag[0].getText())
 
 
-# Press the green button in the gutter to run the script.
+def divider(title: str):
+    print(f"=========={title.upper()}==========")
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    divider("GET TITLE")
+    get_title("https://example.com/")
