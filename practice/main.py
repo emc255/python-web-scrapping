@@ -32,10 +32,6 @@ def book_scrapping(rating: Rating):
 
     print_loop(books)
 
-    # folder_name = "resources/books"
-    # if not os.path.exists(folder_name):
-    #     os.makedirs(folder_name)
-
 
 def has_rating(books: list, products, rating: Rating):
     for product in products:
